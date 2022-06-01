@@ -28,12 +28,27 @@ public class ShoppingCart {
 
             switch (command) {
                 case "add":
-                if (!cart.contains(terms) {
-                    cart.add(terms);
-                } else {
-                    System.err.println("You have this in your cart");
-                }
+                    for (int i = 1; i < terms.length; i++) {
+                        boolean found = false;
+                        for (int j = 0; j < cart.size(); j++) {
+                            if (terms[i].equals(cart.get(j))) {
+                                found = true;
+                                System.out.printf("%s exists in the cart\n", terms[i]);
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            cart.add(terms[i]);
+                            System.out.printf("Added %s to cart\n", terms[i]);
+                        }
+                    }
                     break;
+                // if (!cart.contains(terms)) {
+                //     cart.add(terms);
+                // } else {
+                //     System.err.println("You have this in your cart");
+                // }
+                //     break;
 
                 case "list":
                     if (cart.size() > 0) {
